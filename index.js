@@ -22,7 +22,35 @@ const getUniqueAuthors = (recipes) => {
   // return numberedList;
 };
 
-console.log(getUniqueAuthors(cakeRecipes));
+// console.log(getUniqueAuthors(recipes));
+
+const recipeNames = (recipes) => {
+  if (!recipes.length) {
+    console.log("There are no recipes found.");
+  } else {
+    recipes.forEach(({ Name }) => {
+      console.log(Name);
+    });
+  }
+};
+
+// console.log(recipeNames(cakeRecipes));
+
+const getRecipesByAuthor = (recipes, author) => {
+  const recipesByAuthor = recipes.filter((recipe) => {
+    return recipe.Author === author;
+  });
+
+  if (recipesByAuthor.length === 0) {
+    console.log(`There are no recipes found by ${author}.`);
+  } else {
+    console.log(`ALL RECIPES by ${author}:\n--------------------------------`);
+
+    return recipesByAuthor;
+  }
+};
+
+recipeNames(getRecipesByAuthor(cakeRecipes, "Gordon Ramsey Nilsen"));
 
 // Part 2
 
