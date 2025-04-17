@@ -30,13 +30,15 @@ const recipeNames = (recipes) => {
 
 const getRecipesByAuthor = (recipes, author) => {
   return recipes.filter((recipe) => {
-    recipe.Author === author;
+    return recipe.Author === author;
   });
 };
 
 const getRecipeByIngredient = (recipes, ingredient) => {
   const recipesListByIngredient = recipes.filter((recipe) =>
-    recipe.Ingredients.some((ing) => ing.includes(ingredient))
+    recipe.Ingredients.some((ing) =>
+      ing.toLowerCase().includes(ingredient.toLowerCase())
+    )
   );
   return recipesListByIngredient;
 };
