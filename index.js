@@ -8,7 +8,7 @@ const prompt = require("prompt-sync")();
 const getUniqueAuthors = (recipes) => {
   const uniqueAuthors = [];
 
-  cakeRecipes.forEach((recipe) => {
+  recipes.forEach((recipe) => {
     const author = recipe.Author;
     if (!uniqueAuthors.includes(author)) {
       uniqueAuthors.push(author);
@@ -29,17 +29,9 @@ const recipeNames = (recipes) => {
 };
 
 const getRecipesByAuthor = (recipes, author) => {
-  const recipesByAuthor = recipes.filter((recipe) => {
-    return recipe.Author === author;
+  return recipes.filter((recipe) => {
+    recipe.Author === author;
   });
-
-  if (recipesByAuthor.length === 0) {
-    console.log(`There are no recipes found by ${author}.`);
-  } else {
-    console.log(`ALL RECIPES by ${author}:\n--------------------------------`);
-
-    return recipesByAuthor;
-  }
 };
 
 const getRecipeByIngredient = (recipes, ingredient) => {
@@ -88,9 +80,15 @@ do {
     case 2:
       const authorInput = prompt("Enter an author name: ");
       if (authorInput) {
-        console.log(`Recipes found by ${authorInput}:`);
         const recipes = getRecipesByAuthor(cakeRecipes, authorInput);
-        recipeNames(recipes);
+        if (recipes.length === 0) {
+          console.log(`There are no recipes found by ${authorInput}.`);
+        } else {
+          console.log(
+            `ALL RECIPES by ${authorInput}:\n--------------------------------`
+          );
+          recipeNames(recipes);
+        }
       } else {
         console.log("Please enter a name.");
       }
