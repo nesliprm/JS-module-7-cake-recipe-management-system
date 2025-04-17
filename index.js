@@ -50,10 +50,6 @@ const getRecipesByAuthor = (recipes, author) => {
   }
 };
 
-// NOTE FOR NEXT DAY
-// Log the names of these recipes to the console using the print function you just created.
-// YOURE DONE WITH THIS
-
 recipeNames(getRecipesByAuthor(cakeRecipes, "Gordon Ramsey Nilsen"));
 
 // Part 2
