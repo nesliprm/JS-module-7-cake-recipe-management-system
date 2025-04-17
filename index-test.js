@@ -1,7 +1,5 @@
 "use strict";
 
-// Part 1
-
 const cakeRecipes = require("./cake-recipes.json");
 const prompt = require("prompt-sync")();
 
@@ -16,7 +14,16 @@ const getUniqueAuthors = (recipes) => {
   });
 
   return uniqueAuthors.join("\n");
+
+  // FOR NUMBERED LIST
+  // const numberedList = uniqueAuthors
+  //   .map((author, index) => `${index + 1}. ${author}`)
+  //   .join("\n");
+
+  // return numberedList;
 };
+
+// console.log(getUniqueAuthors(recipes));
 
 const recipeNames = (recipes) => {
   if (!recipes.length) {
@@ -27,6 +34,8 @@ const recipeNames = (recipes) => {
     });
   }
 };
+
+// console.log(recipeNames(cakeRecipes));
 
 const getRecipesByAuthor = (recipes, author) => {
   const recipesByAuthor = recipes.filter((recipe) => {
@@ -42,6 +51,8 @@ const getRecipesByAuthor = (recipes, author) => {
   }
 };
 
+// recipeNames(getRecipesByAuthor(cakeRecipes, "Gordon Ramsey Nilsen"));
+
 const getRecipeByIngredient = (recipes, ingredient) => {
   const recipesListByIngredient = recipes.filter((recipe) =>
     recipe.Ingredients.some((ing) => ing.includes(ingredient))
@@ -49,14 +60,20 @@ const getRecipeByIngredient = (recipes, ingredient) => {
   return recipesListByIngredient;
 };
 
+// recipeNames(getRecipeByIngredient(cakeRecipes, "140g caster sugar"));
+
 const getRecipeByName = (recipes, name) =>
   recipes.find((recipe) => recipe.Name.includes(name));
+
+// console.log(getRecipeByName(cakeRecipes, "carrot"));
 
 const getIngredients = (recipes) => {
   return recipes.reduce((ingredients, recipe) => {
     return [...ingredients, ...recipe.Ingredients];
   }, []);
 };
+
+// console.log(getIngredients(getRecipesByAuthor(cakeRecipes, "Angela Nilsen")));
 
 // Part 2
 
@@ -84,6 +101,10 @@ do {
         console.log(`- ${author}`)
       );
       break;
+    // case 2:
+    //   const authorInput = prompt("Enter an author name: ");
+    //   recipeNames(getRecipesByAuthor(cakeRecipes, authorInput));
+    //   break;
 
     case 2:
       const authorInput = prompt("Enter an author name: ");
