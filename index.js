@@ -50,7 +50,16 @@ const getRecipesByAuthor = (recipes, author) => {
   }
 };
 
-recipeNames(getRecipesByAuthor(cakeRecipes, "Gordon Ramsey Nilsen"));
+// recipeNames(getRecipesByAuthor(cakeRecipes, "Gordon Ramsey Nilsen"));
+
+const getRecipeByIngredient = (recipes, ingredient) => {
+  const recipesListByIngredient = recipes.filter((recipe) =>
+    recipe.Ingredients.some((ing) => ing.includes(ingredient))
+  );
+  return recipesListByIngredient;
+};
+
+recipeNames(getRecipeByIngredient(cakeRecipes, "140g caster sugar"));
 
 // Part 2
 
