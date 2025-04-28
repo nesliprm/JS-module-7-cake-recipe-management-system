@@ -15,7 +15,7 @@ const getUniqueAuthors = (recipes) => {
     }
   });
 
-  return uniqueAuthors.join("\n");
+  return uniqueAuthors;
 };
 
 const recipeNames = (recipes) => {
